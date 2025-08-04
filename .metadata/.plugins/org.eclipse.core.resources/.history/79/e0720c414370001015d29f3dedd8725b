@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>応募完了</title></head>
+<body>
+<h1>ご応募ありがとうございました！</h1>
+<ul th:if="${formData != null}">
+    <li>名前: <span th:text="${formData.name}"></span></li>
+    <li>生年月日: <span th:text="${formData.year}"></span>年 <span th:text="${formData.month}"></span>月 <span th:text="${formData.day}"></span>日</li>
+    <li>年齢: <span th:text="${formData.age}"></span></li>
+    <li>メール: <span th:text="${formData.email}"></span></li>
+    <li>スキル: <span th:text="${formData.skills}"></span></li>
+    <li>経歴: <span th:text="${formData.job}"></span></li>
+    <li>自己PR: <span th:text="${formData.message}"></span></li>
+    <li>志望動機: <span th:text="${formData.message1}"></span></li>
+</ul>
+<h4>面談等の日程は、後日メールにてお知らせ致します。</h4>
+</body>
+</html>
