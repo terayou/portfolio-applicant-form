@@ -29,6 +29,9 @@ public class FormController {
 							@RequestParam int day,
 							@RequestParam int age,
 							@RequestParam String email,
+							@RequestParam String callnumber,
+							@RequestParam String live,
+							@RequestParam String finalbackground,
 							@RequestParam String skills,
 							@RequestParam String job,
 							@RequestParam String PR,
@@ -42,6 +45,9 @@ public class FormController {
         entity.setDay(day);
         entity.setAge(age);
         entity.setEmail(email);
+        entity.setCallnumber(callnumber);
+        entity.setLive(live);
+        entity.setFinalbackground(finalbackground);
         entity.setSkills(skills);
         entity.setJob(job);
         entity.setPR(PR);

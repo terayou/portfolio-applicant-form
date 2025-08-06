@@ -15,6 +15,9 @@ public class FormEntity {
     private int day;
     private int age;
     private String email;
+    private String callnumber;
+    private String live;
+    private String finalbackground;
     private String skills;
     private String job;
     private String PR;
@@ -77,6 +80,30 @@ public class FormEntity {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    // callnumber
+    public String getCallnumber() {
+        return callnumber;
+    }
+    public void setCallnumber(String callnumber) {
+        this.callnumber = callnumber;
+    }   
+    
+    // live
+    public String getLive() {
+        return live;
+    }
+    public void setLive(String live) {
+        this.live = live;
+    }       
+    
+    //　finalbackground
+    public String getFinalbackground() {
+        return finalbackground;
+    }
+    public void setFinalbackground(String finalbackground) {
+        this.finalbackground = finalbackground;
+    }           
 
     // skills
     public String getSkills() {
