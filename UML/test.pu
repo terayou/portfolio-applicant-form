@@ -1,0 +1,21 @@
+@startuml 応募フォーム
+title 応募フォーム
+
+actor User
+participant Browser
+participant Server
+participant DataBase
+
+User -> Browser: フォーム入力
+User -> Browser: 送信押下
+Browser -> Server: POST / submit
+activate Server
+Server --> Browser: "hello"
+deactivate Server
+
+Browser -> Server: GET /test
+activate Server
+Server --> Browser: "test api"
+deactivate Server
+
+@enduml

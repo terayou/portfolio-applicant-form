@@ -1,0 +1,51 @@
+@startuml
+actor Client
+
+participant "API Gateway" as APIGW
+participant "Lambda関数" as Lambda
+participant S3
+participant DynamoDB
+participant "CloudWatch Logs" as Logs
+
+' --- API URL取得処理 ---
+Client -> APIGW: アップロードURLをリクエスト（POST）
+
+group api_handler.py
+    APIGW -> Lambda: リクエストを渡す
+    Lambda -> Lambda: 必要な前処理
+    Lambda --> APIGW: URL発行結果を返す
+end
+
+APIGW --> Client: URLを返す
+
+' --- S3アップロード処理 ---
+Client -> S3: URLを使ってファイルをアップロード
+
+group s3_handler.py
+    S3 -> Lambda: アップロードイベントを通知
+    Lambda --> Lambda: ファイル情報加工
+end
+
+' --- DynamoDB登録処理 ---
+group db_handler.py
+    Lambda -> DynamoDB: ファイル情報を登録
+    DynamoDB --> Lambda: 登録結果を返す
+end
+
+group logs_handler.py
+    Lambda -> Logs: 処理結果をログに出力
+end
+
+' --- ファイル一覧取得処理 ---
+Client -> APIGW: アップロード済みファイル一覧をリクエスト（GET）
+
+group api_handler.py
+    APIGW -> Lambda: リクエストを渡す
+    Lambda -> DynamoDB: ファイル情報を取得
+    DynamoDB --> Lambda: 取得結果を返す
+    Lambda --> APIGW: 結果を返す
+end
+
+APIGW --> Client: ファイル一覧を返す
+
+@enduml
