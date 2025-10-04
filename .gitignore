@@ -36,3 +36,43 @@ out/
 ### VS Code ###
 .vscode/
 .DS_Store
+
+
+# Eclipse / IDE 関連
+.metadata/
+*.log
+*.tmp
+*.bak
+*.swp
+.settings/
+.project
+.classpath
+
+# Gradle / Maven
+.gradle/
+build/
+out/
+target/
+gradle/
+gradlew
+gradlew.bat
+*.iml
+
+# OS 固有
+.DS_Store
+Thumbs.db
+
+# 実行ファイル / コンパイル済みファイル
+*.class
+*.jar
+*.war
+*.ear
+
+# Spring Boot / IntelliJ
+logs/
+*.iws
+.idea/
+
+# その他
+src1/main/
+
