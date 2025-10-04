@@ -22,10 +22,6 @@ public class FormEntity {
     private String job;
     private String PR;
     private String motivation;
-    private String username;
-    private String password;
-    private String role;
-    
 
     // --- ゲッター & セッター ---
 
@@ -140,32 +136,4 @@ public class FormEntity {
     public void setMotivation(String motivation) {
         this.motivation = motivation;
     }
-    
-    
-    public String getRole() {
-    	return role;
-    }
-    
-    public void setRole(String role) {
-    	this.role = role;
-    }
-    
-    
-    
-    public String getUsername() {
-    	return username;
-    }
-    public void setUsername(String username) {
-    	this.username = username;
-    }    
-    
-    public String getPassword(){
-    	return password;
-    }
-    public void setPassword(String password) {
-    	this.password = password;
-    }     
-    
-    
-    
 }
