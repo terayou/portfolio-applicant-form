@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8">
+	<title>新期登録</title>
+	<style>
+		input{
+			border: 1px solid #333333;
+			width: 200px;
+			
+		}
+		button {
+			margin-top: 20px;
+		    padding: 10px 20px;
+		    background: #007bff;
+		    color: white;
+		    border: none;
+		    border-radius: 4px;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<h1>新期登録を行います</h1>
+	<form action="/newRegistration" method="post">
+	<!--入力欄-->
+	<label for = "username">ユーザー名:</label>
+	<input type="email" name="username" id = "username" placeholder ="メールアドレスを入力して下さい" required>
+	
+	<div>
+	<label for = "user">パスワード:</label>
+	<input type="text" name="password" id = "password" required>
+	</div>
+	
+	<div th:if="${error}">
+	    <p th:text="${error}" style="color:red;"></p>
+	</div>
+
+	<!--ボタン-->
+	<button type="submit">登録</button>
+	</form>
+</body>
+</html>
