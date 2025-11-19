@@ -104,6 +104,20 @@
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.3.0</version>
       </plugin>
+      
+      <!-- Spring Boot 実行可能 JAR を生成するための plugin -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>3.2.5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+      </plugin>
+       
     </plugins>
   </build>
   

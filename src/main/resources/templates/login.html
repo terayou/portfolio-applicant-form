@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>ログインフォーム</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+
     <style>
 		input{
 			border: 1px solid #333333;
@@ -21,14 +23,14 @@
 	</style>
 </head>
 <body>
-	<h1>ログインしてください</h1>
 	<form action="/login" method="post">
+		<h1>ログインしてください</h1>
 		<!--入力欄-->
 		<label for = "username">ユーザー名:</label>
-		<input type="email" name="username" id = "username" placeholder ="メールアドレスを入力して下さい" required>
+		<input class="inputname" type="email" name="username" id = "username" placeholder ="メールアドレスを入力して下さい" required>
 		<div>
 			<label for = "password">パスワード:</label>
-			<input type="password" name="password" id = "password" minlength = "8" required>
+			<input class="inputpassword" type="password" name="password" id = "password" minlength = "8" required>
 		</div>
 		<!--ハイパーリンク-->
 		<div>
@@ -43,7 +45,7 @@
 		</div>
 
 		<!--ボタン-->
-		<button type="submit">送信</button>
+		<button class="login" type="submit">ログイン</button>
 		
 	</form>
 	

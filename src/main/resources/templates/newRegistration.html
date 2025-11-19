@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><meta charset="UTF-8">
 	<title>新期登録</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
 	<style>
 		input{
 			border: 1px solid #333333;
@@ -21,8 +22,8 @@
 </head>
 
 <body>
-	<h1>新期登録を行います</h1>
 	<form action="/newRegistration" method="post">
+	<h1>新期登録を行います</h1>
 	<!--入力欄-->
 	<label for = "username">ユーザー名:</label>
 	<input type="email" name="username" id = "username" placeholder ="メールアドレスを入力して下さい" required>

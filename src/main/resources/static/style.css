@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/*CSSの初期化*/
+*{
+	margin: 0;
+	padding: 0;
+} 
+
+/*全体*/
+body{
+	background-image: url("ai.png.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+/*フォーム*/
+form{
+	background-color:rgba(10,5,118,0.5);
+	width: 500px;
+	height: 450px;
+	margin: 50vh auto 0;
+	transform: translateY(-50%);
+	border-radius: 30px;	
+}
+
+form h1{
+	color: #fff;
+	text-align: center;
+	padding-top: 60px;
+	
+}
+
+/*入力欄*/
+form p{
+	width: 25px;
+	margin: 0 auto;
+}
+
+input{
+	outline: none;
+}
+
+.inputname,.inputpassword{
+	width: 300px;
+	height: 40px;
+	border-radius: 10px;
+	border: none;
+	background-color: rgba(255,255,255,0.6);
+	padding-left: 15px;
+	font-size: 18px;
+	color: #fff;
+	
+}
+
+.inputname{
+	margin-top: 40px;
+	margin-bottom: 25px;
+}
+
+.inputname::placeholder,.inputpassword::placeholder{
+	color: rgba(255,255,255,0.7);
+}
+
+/*送信ボタン*/
+.login{
+	width: 190px;
+	height: 45px;
+	background-color: #0cbbdb;
+	display: block;
+	margin: 0 auto;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	line-height: 28px;
+	font-size: 20px;
+	border: none;
+	border-radius: 10px;
+	margin-top: 40px;
+	cursor: pointer;
+	
+}
+
+
+
+
+
