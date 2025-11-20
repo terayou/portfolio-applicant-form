@@ -26,11 +26,11 @@
 	<h1>新期登録を行います</h1>
 	<!--入力欄-->
 	<label for = "username">ユーザー名:</label>
-	<input type="email" name="username" id = "username" placeholder ="メールアドレスを入力して下さい" required>
+	<input class="inputname" type="email" name="username" id = "username" placeholder ="メールアドレスを入力して下さい" required>
 	
 	<div>
 	<label for = "user">パスワード:</label>
-	<input type="text" name="password" id = "password" required>
+	<input class="inputpassword" type="text" name="password" id = "password" required>
 	</div>
 	
 	<div th:if="${error}">
@@ -38,7 +38,7 @@
 	</div>
 
 	<!--ボタン-->
-	<button type="submit">登録</button>
+	<button class="button" type="submit">登録</button>
 	</form>
 </body>
 </html>

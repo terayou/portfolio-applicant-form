@@ -61,7 +61,7 @@ input{
 }
 
 /*送信ボタン*/
-.login{
+.button{
 	width: 190px;
 	height: 45px;
 	background-color: #0cbbdb;
@@ -76,7 +76,6 @@ input{
 	border-radius: 10px;
 	margin-top: 40px;
 	cursor: pointer;
-	
 }
 
 

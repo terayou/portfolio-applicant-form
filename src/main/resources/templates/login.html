@@ -34,10 +34,10 @@
 		</div>
 		<!--ハイパーリンク-->
 		<div>
-		<a href = "http://localhost:8080/forgetpassword" >パスワードをお忘れの方はこちら</a>
+			<a th:href = "@{/forgetpassword}" >パスワードをお忘れの方はこちら</a>
 		</div>
 		<div>
-			<a href = "http://localhost:8080/newRegistration" >初めてログインする方はこちら</a>
+			<a th:href = "@{/newRegistration}" >初めてログインする方はこちら</a>
 		</div>
 		
 		<div th:if="${error}">
@@ -45,11 +45,8 @@
 		</div>
 
 		<!--ボタン-->
-		<button class="login" type="submit">ログイン</button>
+		<button class="button" type="submit">ログイン</button>
 		
 	</form>
-	
-	
-	
 </body>
 	
