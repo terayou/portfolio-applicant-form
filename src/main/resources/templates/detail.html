@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>応募者詳細</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+        body {
+            font-family: "Helvetica", "Arial", sans-serif;
+            margin: 40px;
+        }
+    </style>
+</head>
+<body>
+	<h1 th:text="'応募者詳細：' + ${applicant.name}"></h1>
+
+	<p>生年月日：<span th:text="${applicant.year} + '-' + ${applicant.month} + '-' + ${applicant.day}"></span></p>
+	<p>年齢：<span th:text="${applicant.age}"></span></p>
+	<p>メール：<span th:text="${applicant.email}"></span></p>
+	<p>電話番号：<span th:text="${applicant.callnumber}"></span></p>
+	<p>住所：<span th:text="${applicant.live}"></span></p>
+	<p>最終学歴：<span th:text="${applicant.finalbackground}"></span></p>
+	<p>資格：<span th:text="${applicant.skills}"></span></p>
+	<p>経歴：<span th:text="${applicant.job}"></span></p>
+	<p>自己PR：<span th:text="${applicant.PR}"></span></p>
+	<p>志望動機：<span th:text="${applicant.motivation}"></span></p>
+
+	<h2>評価をつける</h2>
+
+	<form th:action="@{/updateScore}" method="post">
+	    <input type="hidden" name="id" th:value="${applicant.id}">
+	    <label>評価点：</label>
+	    <input type="number" name="score" th:value="${applicant.score}" min="0" max="100">
+	    <button type="submit">保存</button>
+	</form>
+
+	</body>
+	</html>

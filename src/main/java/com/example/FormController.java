@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
+import java.util.List;
+
 
 @Controller
 public class FormController {
@@ -15,33 +17,48 @@ public class FormController {
     @Autowired
     private EmailService emailService;
 
-    @GetMapping("/")
-    @ResponseBody
-    public String home() {
-        return "Hello from Spring Boot!";
-    }
-
     @GetMapping("/login")
-    public String showLogin() {
+    public String ShowLogin() {
         return "login";
     } 
     
     @GetMapping("/newRegistration")
-    public String shownewRegistration() {
+    public String ShownewRegistration() {
         return "newRegistration";
     } 
     
     @GetMapping("/forgetpassword")
-    public String showforgetPassword() {
+    public String ShowforgetPassword() {
         return "forgetpassword";
     } 
     
     @GetMapping("/form")
-    public String showForm() {
+    public String ShowForm() {
         return "form";
     }
+    
+    //応募者一覧
+    @GetMapping("/list")
+    public String ShowList(Model model) {
+    	List<FormEntity> list = formRepository.findAll();
+    	model.addAttribute("list", list);
+    	return "list";
+    }
+    
+    //詳細ページへ
+    @GetMapping("/detail/{id}")
+    public String showDetail(@PathVariable Long id, Model model) {
 
+        Optional<FormEntity> applicantOpt = formRepository.findById(id);
 
+        if (applicantOpt.isPresent()) {
+            model.addAttribute("applicant", applicantOpt.get());
+            return "detail";
+        } else {
+            return "redirect:/list";  // いなければ一覧へ戻る
+        }
+    }
+    
     
     @PostMapping("/login")
     public String LoginForm(@RequestParam String username,
@@ -50,19 +67,15 @@ public class FormController {
     	
     	Optional<FormEntity> founduser = formRepository.findByUsernameAndPassword(username, password);
 
-    	
     	if(founduser.isPresent()) {
     		FormEntity user = founduser.get();
     		
     		if("admin".equals(user.getRole())) {
     			//管理者のパスなら管理者メニューに移行
     			return "admin";
-    			
     		}else if("user".equals(user.getRole())){
-    			
     			//応募者のパスなら応募フォームに移行
     			return "form";
-    			
     		}else {
         		return "login";
     		}	
@@ -70,7 +83,6 @@ public class FormController {
     	model.addAttribute("error", "ユーザー名かパスワードが違います");
         return "login";
     }
-    
     
     @PostMapping("/newRegistration")
     public String NewRegistrationForm(@RequestParam String username,
@@ -91,11 +103,9 @@ public class FormController {
     	return "registrationComplete";
     }
     
-    
     @PostMapping("/forgetpassword")
     public String ForgetpasswordForm(@RequestParam String username,
 									  Model model) {
-    	
     	Optional<FormEntity> founduser = formRepository.findByUsername(username);
     	
     	if(founduser.isPresent()) {
@@ -114,11 +124,8 @@ public class FormController {
     	}else {
     		model.addAttribute("error", "ユーザー名が存在しません");
     	}
-    	
     	return "forgetpassword";
-    	
     }
-    
     
     @PostMapping("/submit")
     public String submitForm(@RequestParam String name,
@@ -158,4 +165,33 @@ public class FormController {
 
         return "index";
     }
+    
+    @PostMapping("/updateScore")
+    public String updateScore(@RequestParam("id") Long id,
+                              @RequestParam("score") Integer score) {
+        Optional<FormEntity> applicantOpt = formRepository.findById(id);
+        if(applicantOpt.isPresent()) {
+            FormEntity applicant = applicantOpt.get();
+            applicant.setScore(score);
+            formRepository.save(applicant);
+        }
+        return "redirect:/detail/" + id; // 保存後に一覧に戻る
+    }
+    
+    @PostMapping("/list")
+    public String SearchList(@RequestParam String keyword, Model model) {
+
+        List<FormEntity> list;
+
+        if (keyword == null || keyword.isEmpty()) {
+            list = formRepository.findAll();  // 検索ワードなし → 全件表示
+        } else {
+            list = formRepository.findByNameContaining(keyword);
+        }
+
+        model.addAttribute("list", list);
+        model.addAttribute("keyword", keyword);  // 入力保持
+        return "list";
+    }    
+
 }

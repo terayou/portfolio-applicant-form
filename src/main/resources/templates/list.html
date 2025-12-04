@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>応募者一覧</title>
+</head>
+<body>
+
+<h1>応募者一覧</h1>
+
+<form action="/list" method="post">
+    <input type="text" name="keyword" placeholder="名前で検索"
+           th:value="${keyword}">
+    <button type="submit">検索</button>
+</form>
+
+<ul>
+    <li th:each="item : ${list}">
+        <a th:href="@{'/detail/' + ${item.id}}" 
+           th:text="${item.name}"></a>
+	    <a th:text="${item.email}"></a>
+    </li>
+</ul>
+
+</body>
+</html>

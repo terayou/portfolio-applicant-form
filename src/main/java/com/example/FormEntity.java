@@ -8,7 +8,6 @@ public class FormEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private int year;
     private int month;
@@ -25,14 +24,13 @@ public class FormEntity {
     private String username;
     private String password;
     private String role;
+    private Integer score;
     
-
+ 
     // --- ゲッター & セッター ---
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -141,7 +139,7 @@ public class FormEntity {
         this.motivation = motivation;
     }
     
-    
+    //管理者
     public String getRole() {
     	return role;
     }
@@ -164,8 +162,16 @@ public class FormEntity {
     }
     public void setPassword(String password) {
     	this.password = password;
-    }     
+    }    
     
+    //応募者一覧
     
+    // 評価点
+    public Integer getScore() { 
+    	return score; 
+    }
+    public void setScore(Integer score) { 
+    	this.score = score; 
+    }
     
 }
